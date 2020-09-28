@@ -1,3 +1,3 @@
 # test-repo
-release
-aiueo
+develop
+aiueo2
