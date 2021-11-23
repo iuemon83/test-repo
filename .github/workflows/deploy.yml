@@ -14,7 +14,7 @@ jobs:
           ref: master
       - name: ssh key generate
         run: |
-          echo "$DEPLOY_KEY_SERVER" > key,
+          echo "$DEPLOY_KEY_SERVER" > key
           chmod 600 key
         env:
           DEPLOY_KEY_SERVER: ${{ secrets.DEPLOY_KEY_SERVER }}
