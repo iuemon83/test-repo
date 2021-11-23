@@ -20,7 +20,7 @@ jobs:
           DEPLOY_KEY_SERVER: ${{ secrets.DEPLOY_KEY_SERVER }}
 
       - name: ssh
-        run: ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "ec2-user@${DEPLOY_HOST_SERVER}"
+        run: ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}"
         env:
           DEPLOY_USER_SERVER: ${{ secrets.DEPLOY_USER_SERVER }}
           DEPLOY_HOST_SERVER: ${{ secrets.DEPLOY_HOST_SERVER }}
@@ -31,8 +31,7 @@ jobs:
           -av \
           --delete \
           -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
-          ./a/* \
-          "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}:/opt/csv_deploy/"
+          ./a/* "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}:/opt/csv_deploy/"
         env:
           DEPLOY_USER_SERVER: ${{ secrets.DEPLOY_USER_SERVER }}
           DEPLOY_HOST_SERVER: ${{ secrets.DEPLOY_HOST_SERVER }}
