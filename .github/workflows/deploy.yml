@@ -19,11 +19,11 @@ jobs:
         env:
           DEPLOY_KEY_SERVER: ${{ secrets.DEPLOY_KEY_SERVER }}
 
-      - name: ssh
-        run: ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}"
-        env:
-          DEPLOY_USER_SERVER: ${{ secrets.DEPLOY_USER_SERVER }}
-          DEPLOY_HOST_SERVER: ${{ secrets.DEPLOY_HOST_SERVER }}
+      # - name: ssh
+      #   run: ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}"
+      #   env:
+      #     DEPLOY_USER_SERVER: ${{ secrets.DEPLOY_USER_SERVER }}
+      #     DEPLOY_HOST_SERVER: ${{ secrets.DEPLOY_HOST_SERVER }}
 
       # 同期のための rsync コマンド。後ほど詳述
       - name: rsync deploy
