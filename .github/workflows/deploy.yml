@@ -27,8 +27,7 @@ jobs:
 
       # 同期のための rsync コマンド。後ほど詳述
       - name: rsync deploy
-        run: rsync --checksum \
-          -av \
+        run: rsync --checksum -av \
           --delete \
           -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
           ./a/* "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}:/opt/csv_deploy/"
