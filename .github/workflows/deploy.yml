@@ -22,7 +22,7 @@ jobs:
       - name: ssh
         run:
           ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
-          "${DEPLOY_USER_SERVER}@${DEPLOY_HOST_SERVER}"
+          "ec2-user@${DEPLOY_HOST_SERVER}"
         env:
           DEPLOY_USER_SERVER: ${{ secrets.DEPLOY_USER_SERVER }}
           DEPLOY_HOST_SERVER: ${{ secrets.DEPLOY_HOST_SERVER }}
