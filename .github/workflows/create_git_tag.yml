@@ -25,7 +25,8 @@ jobs:
       - name: Get commit summary
         id: get_commit_summary
         run: |
-          echo $(git tag --sort=-creatordate)
+          A=$(git tag --sort=-creatordate)
+          echo $A
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 1p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
           COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..${{ github.ref }})"
