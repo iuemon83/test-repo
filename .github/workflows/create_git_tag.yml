@@ -16,16 +16,10 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::v$(TZ=Asia/Tokyo date +%Y%m%d-%H%M%S)
 
-      # - name: create tag
-      #   run: |
-      #     echo "v1-$(TZ=Asia/Tokyo date +%Y%m%d-%H%M%S)" > TAG_NAME
-      #     git tag $(cat TAG_NAME)
-      #     git push origin $(cat TAG_NAME)
-
       - name: Get commit summary
         id: get_commit_summary
         run: |
-          git fetch --tags
+          git fetch --tags --unshallow
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 1p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
           COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..${{ github.ref }})"
