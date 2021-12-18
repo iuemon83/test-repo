@@ -22,6 +22,7 @@ jobs:
       #     git tag $(cat TAG_NAME)
       #     git push origin $(cat TAG_NAME)
 
+      - run: git fetch
       - run: git status
       - run: git tag --sort=-creatordate
       - name: Get commit summary
