@@ -13,7 +13,7 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+        run: echo ::set-output name=VERSION::v$(TZ=Asia/Tokyo date +%Y%m%d-%H%M%S)
 
       # - name: create tag
       #   run: |
