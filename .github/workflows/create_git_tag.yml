@@ -22,9 +22,9 @@ jobs:
       #     git tag $(cat TAG_NAME)
       #     git push origin $(cat TAG_NAME)
 
+      - run: git tag --sort=-creatordate
       - name: Get commit summary
         id: get_commit_summary
-        run: git tag --sort=-creatordate
         run: |
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 1p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
